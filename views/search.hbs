@@ -1,0 +1,31 @@
+<h1>{{cube.name}}</h1>
+    <img class="cube" src="{{cube.imageUrl}}">
+<br>
+<div class="details">
+  <p><span>Description:</span>{{cube.description}}</p>
+  <p><span>Difficulty level:</span>{{cube.difficulty}}</p>
+   <div align="center">
+        <a class="btn" href="/">Back</a>
+        {{#if user}}        
+            <a class="btn" href="/attach/accessory/{{cube._id}}">Attach</a><br>
+            <a class="btn" href="/edit/{{cube._id}}">Edit</a>
+            <form method="POST" action="/delete/{{cube.id}}" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">Delete Cube</button>
+            </form>
+        {{/if}}
+    </div>
+</div>
+<h2>Accessories</h2>
+<div class="accessories">
+    {{#each accessories}}
+        <div class="accessory">
+            <img src={{imageUrl}} alt={{name}}>
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+        </div>
+    {{else}}
+        <h3 class="italic">This cube has no accessories yet...</h3>
+    {{/each}}
+</div>
+<br><br><br><br><br><br><br><br><br><br>
